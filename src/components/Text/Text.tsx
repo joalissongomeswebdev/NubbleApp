@@ -1,11 +1,10 @@
-import {
-  Platform,
-  Text as RNText,
-  TextProps as RNTextProps,
-  TextStyle,
-} from 'react-native';
+import { createText, TextProps as SRTextProps } from '@shopify/restyle';
+import { Platform, TextProps as RNTextProps, TextStyle } from 'react-native';
+import { Theme } from '../../theme/theme';
 
-interface TextProps extends RNTextProps {
+const SRText = createText<Theme>();
+
+interface TextProps extends RNTextProps, SRTextProps<Theme> {
   preset?: TextVariants;
   bold?: boolean;
   italic?: boolean;
@@ -26,12 +25,13 @@ export function Text({
     isHeading || bold ? 'bold' : semiBold ? 'medium' : 'regular';
 
   return (
-    <RNText
+    <SRText
+      color="backgroundContrast"
       style={[$fontSizes[preset], fontStyleFor(weight, italic), style]}
       {...rest}
     >
       {children}
-    </RNText>
+    </SRText>
   );
 }
 
