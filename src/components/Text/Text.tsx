@@ -45,7 +45,7 @@ type TextVariants =
   | 'caption'
   | 'captionSmall';
 
-const $fontSizes: Record<TextVariants, TextStyle> = {
+export const $fontSizes: Record<TextVariants, TextStyle> = {
   headingLarge: { fontSize: 32, lineHeight: 38.4 },
   headingMedium: { fontSize: 22, lineHeight: 26.4 },
   headingSmall: { fontSize: 18, lineHeight: 23.4 },
@@ -60,7 +60,7 @@ const $fontSizes: Record<TextVariants, TextStyle> = {
 
 type Weight = 'regular' | 'medium' | 'bold';
 
-const $fontFamily: Record<Weight, { normal: string; italic: string }> = {
+export const $fontFamily: Record<Weight, { normal: string; italic: string }> = {
   regular: { normal: 'Satoshi-Regular', italic: 'Satoshi-Italic' },
   medium: { normal: 'Satoshi-Medium', italic: 'Satoshi-MediumItalic' },
   bold: { normal: 'Satoshi-Bold', italic: 'Satoshi-BoldItalic' },
@@ -73,7 +73,7 @@ function fontStyleFor(weight: Weight, italic?: boolean): TextStyle {
     },
     ios: {
       fontFamily: 'Satoshi',
-      fontWeight: weight === 'bold' ? '700' : '400',
+      fontWeight: weight === 'bold' ? '700' : '500',
       fontStyle: italic ? 'italic' : 'normal',
     },
   });
